@@ -73,6 +73,7 @@ emotion-recognition/
 │
 ├── dataset/                # Contains the FER2013 dataset (downloaded at runtime)
 ├── Training.ipynb          # Main script for preprocessing, training, and evaluation
+├── video.ipynb             # Detect emotion from webcam
 └── README.md               # Project documentation (this file)
 ```
 
@@ -103,6 +104,7 @@ emotion-recognition/
 Plots include:
 1. **Accuracy Comparison**: Training vs. Validation accuracy for both models.
 2. **Loss Comparison**: Training vs. Validation loss for both models.
+![image](https://github.com/user-attachments/assets/3e6ae029-a3d3-45eb-96f6-6968dc58c315)
 
 ---
 
