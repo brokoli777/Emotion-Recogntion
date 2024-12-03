@@ -19,6 +19,16 @@ This project implements an **Emotion Recognition** system using Convolutional Ne
 
 ---
 
+## References
+
+The project is inspired by several references and existing implementations, including:
+1. [Kaggle: Facial Expression Recognition FER Challenge](https://www.kaggle.com/datasets/ashishpatel26/facial-expression-recognitionferchallenge)
+2. [Facial Emotion Recognition in Real-Time](https://learnopencv.com/facial-emotion-recognition/)
+3. [Introduction to Convolutional Neural Networks](https://www.geeksforgeeks.org/introduction-convolution-neural-network/)
+4. [Microsoft FERPlus](https://github.com/microsoft/FERPlus): FER+ annotations for the FER dataset.
+
+---
+
 ## Applications
 
 The emotion recognition system has practical uses in fields like:
