@@ -80,6 +80,8 @@ emotion-recognition/
 ---
 
 ## Models
+There are two models for comparison and to see which architecture performs the best.
+
 1. **Model 1**: Deep CNN architecture with:
    - Multiple convolutional and pooling layers
    - Dense fully connected layer with dropout
