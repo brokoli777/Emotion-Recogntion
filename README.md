@@ -48,7 +48,7 @@ The FER2013 dataset is downloaded automatically using KaggleHub. Ensure you have
 
 ### 3. Run the Script
 ```bash
-python train_model.py
+python Training.ipynb
 ```
 
 This will:
@@ -72,7 +72,7 @@ This will:
 emotion-recognition/
 │
 ├── dataset/                # Contains the FER2013 dataset (downloaded at runtime)
-├── train_model.py          # Main script for preprocessing, training, and evaluation
+├── Training.ipynb          # Main script for preprocessing, training, and evaluation
 └── README.md               # Project documentation (this file)
 ```
 
