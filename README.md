@@ -1,117 +1,144 @@
 # Emotion Recognition using Convolutional Neural Networks (CNN)
 
 ## Overview
-This project implements emotion recognition from facial expressions using the **FER2013 dataset**. It leverages Convolutional Neural Networks (CNNs) for feature extraction and classification into seven emotion categories: `angry`, `disgust`, `fear`, `happy`, `sad`, `surprise`, and `neutral`. The project is built using TensorFlow and Keras and includes multiple preprocessing, training, and evaluation steps.
+
+This project implements an **Emotion Recognition** system using Convolutional Neural Networks (CNNs) to classify facial expressions into seven categories: `Angry`, `Disgust`, `Fear`, `Happy`, `Sad`, `Surprise`, and `Neutral`. The model was trained on the **FER2013 dataset** and uses Python libraries like TensorFlow/Keras for deep learning and OpenCV for real-time application.
 
 ---
 
 ## Features
-- **Dataset Handling**: Automatic download and setup of the FER2013 dataset using KaggleHub.
-- **Data Preprocessing**: Includes data normalization, one-hot encoding of labels, and feature validation.
-- **Model Architectures**: 
-  - **Model 1**: A deep CNN with multiple convolutional, pooling, and dropout layers for feature extraction and generalization.
-  - **Model 2**: A simpler CNN architecture leveraging global average pooling for better performance on smaller datasets.
-- **Model Training**: Includes callbacks for early stopping and dynamic learning rate adjustment.
-- **Visualization**: Comparison of training and validation accuracy/loss for both models.
-- **Prediction**: Real-time testing of model performance on random samples from the test set.
+
+- **Dataset**: Uses FER2013 dataset (grayscale 48x48 images).
+- **Two CNN Architectures**:
+  - **Model 1**: High-capacity CNN designed for larger datasets and complex tasks.
+  - **Model 2**: Lightweight alternative optimized for smaller datasets.
+- **Real-Time Emotion Recognition**: Combines trained CNN with OpenCV and Haar Cascade for face detection and emotion recognition in webcam footage.
+- **Performance Metrics**:
+  - Model 1 achieved 64% test accuracy.
+  - Model 2 achieved 58% test accuracy.
+
+---
+
+## Applications
+
+The emotion recognition system has practical uses in fields like:
+- **Customer Service**: Evaluating customer satisfaction and conducting product surveys.
+- **Healthcare**: Monitoring emotional states for mental health diagnosis and treatment.
+- **Security**: Detecting unusual behavior in surveillance systems.
+- **Entertainment**: Adapting gaming or AR environments to the player's emotions.
+
+---
+
+## Project Details
+
+### Dataset
+- **FER2013**: A publicly available dataset containing 48x48 grayscale images split into training and testing sets.
+- Preprocessing steps:
+  - Image normalization to values in [0, 1].
+  - One-hot encoding for emotion labels.
+
+### Model Architectures
+
+#### Model 1
+- **Features**:
+  - Four convolutional blocks with filters increasing from 32 to 128.
+  - Fully connected layer with 1024 neurons.
+  - Dropout rates between 0.2 and 0.5 for regularization.
+  - Optimized for larger, complex datasets.
+- **Performance**:
+  - Test Accuracy: 64%
+  - Test Loss: 1.08
+
+#### Model 2
+- **Features**:
+  - Three convolutional blocks with a Global Average Pooling layer.
+  - Fully connected layer with 64 neurons.
+  - Lightweight architecture for smaller datasets.
+- **Performance**:
+  - Test Accuracy: 58%
+  - Test Loss: 1.08
+
+### Training Details
+- Optimizer: **Adam** with default (Model 1) and custom (Model 2) learning rates.
+- Loss Function: **Categorical Cross-Entropy**.
+- Metrics: **Accuracy**.
+- Callbacks:
+  - **Early Stopping**: Monitors validation loss to avoid overfitting.
+  - **ReduceLROnPlateau**: Dynamically adjusts the learning rate.
+
+### Real-Time Emotion Recognition
+A Python notebook (`video.ipynb`) demonstrates real-time emotion recognition:
+- Detects faces using OpenCV and Haar Cascade.
+- Passes cropped faces to the trained CNN model for emotion inference.
+- Displays bounding boxes and predicted emotions on webcam footage.
+
+---
+
+## Results & Insights
+
+### Comparison of Models
+
+| Metric          | Model 1 | Model 2 |
+|------------------|---------|---------|
+| Test Accuracy    | 64%     | 58%     |
+| Test Loss        | 1.08    | 1.08    |
+| Training Speed   | Slower  | Faster  |
+| Overfitting Risk | Higher  | Lower   |
+
+- **Model 1** excels at handling large datasets with high complexity but risks overfitting.
+- **Model 2** is a simpler alternative for faster training and better generalization on smaller datasets.
+  ![image](https://github.com/user-attachments/assets/a677a52c-6ce7-4e27-961d-bdb9647536a9)
+
+
+### Real-Time Demo
+- Detects emotions in real-time using the webcam.
+- Achieves accurate predictions for a range of expressions under good lighting conditions.
+
+---
+
+## Future Improvements
+- Incorporate diverse datasets for better generalization.
+- Add multimodal inputs (audio/text) for enhanced emotion detection.
+- Explore transfer learning with pre-trained models for higher accuracy.
+- Fine-tune models for real-time performance optimization.
 
 ---
 
 ## Prerequisites
-- Python 3.8+
-- Libraries:
-  - TensorFlow/Keras
-  - Pandas
-  - NumPy
-  - Matplotlib
-  - Seaborn
-  - KaggleHub
-  - Scikit-learn
 
-Install the dependencies using:
-```bash
-pip install tensorflow pandas numpy matplotlib seaborn kagglehub scikit-learn
-```
+### Installation
+- Python 3.8+
+- Required Libraries:
+  ```bash
+  pip install tensorflow pandas numpy matplotlib seaborn kagglehub scikit-learn opencv-python
+  ```
 
 ---
 
 ## Usage
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your_username/emotion-recognition.git
-cd emotion-recognition
-```
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your_username/emotion-recognition.git
+   cd emotion-recognition
+   ```
 
-### 2. Download Dataset
-The FER2013 dataset is downloaded automatically using KaggleHub. Ensure you have your Kaggle API key configured.
+2. **Download the Dataset**:
+   The dataset is downloaded automatically using KaggleHub. Ensure your Kaggle API key is configured.
 
-### 3. Run the Script
-```bash
-python Training.ipynb
-```
+3. **Train the Models**:
+   ```bash
+   python train_model.py
+   ```
 
-This will:
-1. Preprocess the dataset.
-2. Train two CNN models.
-3. Plot training/validation accuracy and loss for both models.
-4. Test the models on a random sample.
-
----
-
-## Key Results
-- **Model Comparison**:
-  - Training/Validation Accuracy and Loss for both models are plotted side-by-side for comparison.
-- **Prediction Example**:
-  - A random test sample is visualized along with its actual and predicted labels.
-
----
-
-## Project Structure
-```
-emotion-recognition/
-│
-├── dataset/                # Contains the FER2013 dataset (downloaded at runtime)
-├── Training.ipynb          # Main script for preprocessing, training, and evaluation
-├── video.ipynb             # Detect emotion from webcam
-└── README.md               # Project documentation (this file)
-```
-
----
-
-## Models
-There are two models for comparison and to see which architecture performs the best.
-
-1. **Model 1**: Deep CNN architecture with:
-   - Multiple convolutional and pooling layers
-   - Dense fully connected layer with dropout
-   - Optimized for detailed feature extraction
-
-2. **Model 2**: Lightweight CNN with:
-   - Global average pooling
-   - Fewer convolutional layers
-   - Faster training with comparable accuracy
-
----
-
-## Training Hyperparameters
-- Batch Size: `128`
-- Epochs: `40`
-- Optimizer: `Adam`
-- Loss Function: `Categorical Cross-Entropy`
-
----
-
-## Visualization
-Plots include:
-1. **Accuracy Comparison**: Training vs. Validation accuracy for both models.
-2. **Loss Comparison**: Training vs. Validation loss for both models.
-![image](https://github.com/user-attachments/assets/3e6ae029-a3d3-45eb-96f6-6968dc58c315)
+4. **Run the Real-Time Demo**:
+   Open `video.ipynb` and follow the instructions to test emotion recognition using your webcam.
 
 ---
 
 ## Contributors
-- **Harshil Patel**
+
 - **Bregwin Jogi**
+- **Harshil Patel**
 - **Nonthachai Plodthong**
 - **Matt Hyland**
