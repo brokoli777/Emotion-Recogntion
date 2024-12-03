@@ -142,3 +142,10 @@ A Python notebook (`video.ipynb`) demonstrates real-time emotion recognition:
 - **Harshil Patel**
 - **Nonthachai Plodthong**
 - **Matt Hyland**
+
+## References
+
+- FER-2013. (2020, July 19). Kaggle. https://www.kaggle.com/datasets/msambare/fer2013
+- Durai, P., & Durai, P. (2023, December 29). Facial Emotion Recognition in Real-Time. LearnOpenCV – Learn OpenCV, PyTorch, Keras, Tensorflow With Code, & Tutorials. https://learnopencv.com/facial-emotion-recognition/
+- GeeksforGeeks. (2024, October 10). Introduction to Convolution Neural Network. GeeksforGeeks. https://www.geeksforgeeks.org/introduction-convolution-neural-network/
+- GeeksforGeeks. (2024a, May 22). Emotion detection using convolutional neural networks (CNNs). GeeksforGeeks. https://www.geeksforgeeks.org/emotion-detection-using-convolutional-neural-networks-cnns/
